@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+    <CheckBoxPreference android:title="@string/start_check" android:summaryOn="@string/start_check_on" android:summaryOff="@string/start_check_off" android:defaultValue="false" android:key="@string/start_check_key" android:icon="@drawable/emo_im_laughing"/>
+    <Preference android:dependency="@string/start_check_key" android:title="@string/choose_figure" android:key="@string/choose_figure_key" android:icon="@drawable/ic_menu_archive"/><Preference android:icon="@drawable/ic_menu_info_details" android:title="@string/about" android:key="@string/about_key"/>
+    <Preference android:icon="@drawable/ic_menu_recent_history" android:title="@string/check_update" android:key="@string/check_update_key"/>
+    
+    
+
+</PreferenceScreen>
