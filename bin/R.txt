@@ -1,3 +1,5 @@
+int array auto_update_frequency_entry 0x7f080002
+int array auto_update_frequency_value 0x7f080003
 int array efp__size_units 0x7f080000
 int array efp__sorting_types 0x7f080001
 int attr efp__ic_action_cancel 0x7f010001
@@ -100,6 +102,7 @@ int drawable ic_launcher 0x7f020051
 int drawable ic_menu_archive 0x7f020052
 int drawable ic_menu_info_details 0x7f020053
 int drawable ic_menu_recent_history 0x7f020054
+int drawable ic_perm_group_device_alarms 0x7f020055
 int id RelativeLayout1 0x7f0b0005
 int id action_settings 0x7f0b001f
 int id button1 0x7f0b001d
@@ -142,7 +145,8 @@ int layout efp__new_folder 0x7f030006
 int layout fragment_main 0x7f030007
 int layout no_ota 0x7f030008
 int layout ota 0x7f030009
-int menu main 0x7f0a0000
+int menu change 0x7f0a0000
+int menu main 0x7f0a0001
 int string about 0x7f070017
 int string about_detail 0x7f07001d
 int string about_key 0x7f070018
@@ -150,6 +154,9 @@ int string action_settings 0x7f07000f
 int string app_name 0x7f07000d
 int string app_website 0x7f070025
 int string author 0x7f07001c
+int string auto_update_frequency_key 0x7f070028
+int string auto_update_frequency_title 0x7f070027
+int string cancel_button 0x7f070029
 int string check_update 0x7f070019
 int string check_update_key 0x7f07001a
 int string checking 0x7f070026
@@ -169,6 +176,12 @@ int string efp__folder_name_hint 0x7f070008
 int string efp__folder_not_created 0x7f07000a
 int string efp__new_folder 0x7f070007
 int string efp__sort 0x7f07000c
+int string frequency_1 0x7f07002c
+int string frequency_12 0x7f07002e
+int string frequency_24 0x7f07002f
+int string frequency_30 0x7f07002b
+int string frequency_6 0x7f07002d
+int string frequency_always 0x7f07002a
 int string hello_world 0x7f07000e
 int string new_version 0x7f070020
 int string new_version_number 0x7f07001f
@@ -180,6 +193,7 @@ int string start_check_key 0x7f070014
 int string start_check_off 0x7f070013
 int string start_check_on 0x7f070012
 int string tip 0x7f07001e
+int string title_activity_change 0x7f070030
 int string version 0x7f070024
 int string version_name 0x7f07001b
 int style AppBaseTheme 0x7f06000e

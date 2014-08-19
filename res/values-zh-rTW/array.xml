@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="auto_update_frequency_entry">  
+        <item>開起螢幕時變換</item> 
+        <item>30分鐘</item>  
+        <item>1小時</item>
+        <item>6小時</item>    
+        <item>12小時</item>  
+        <item>24小時</item>     
+    </string-array>
+      
+    <string-array name="auto_update_frequency_value">   
+        <item>0</item> 
+        <item>30</item>  
+        <item>60</item>
+        <item>360</item>    
+        <item>720</item>  
+        <item>1440</item>     
+    </string-array> 
+</resources>

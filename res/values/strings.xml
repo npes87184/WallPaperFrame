@@ -15,7 +15,7 @@
     <string name="about_key">About_key</string>
     <string name="check_update">Check Update</string>
     <string name="check_update_key">Check_Update_Key</string>
-    <string name="version_name">&#160;Version Name：1.0</string>
+    <string name="version_name">&#160;Version Name：1.1</string>
     <string name="author">&#160;Author：NPES</string>
     <string name="about_detail"> Project：<a href="https://github.com/npes87184/WallPaperFrame">GitHub</a></string>
     <string name="tip">Choose more item by long pressing</string>
@@ -24,8 +24,20 @@
     <string name="no_version">No New Version</string>
     <string name="no_new_version">&#160;You have the latest version. \n</string>
     <string name="problem"> If you get some problem you can go this <a href="http://home.gamer.com.tw/creationDetail.php?sn=2556164">web</a> to contact me.</string>
-	<string name="version">&#160;Find new version! \n</string>
-    <string name="app_website"> <a href="http://home.gamer.com.tw/creationDetail.php?sn=2556164">More Information</a></string>
-    <string name="checking">Checking\u2026</string> 
-    
+    <string name="version">&#160;Find new version! \n</string>
+    <string name="app_website"><a href="http://home.gamer.com.tw/creationDetail.php?sn=2556164">More Information</a></string>
+    <string name="checking">Checking\u2026</string>
+    <string name="auto_update_frequency_title">Auto change frequency</string>
+    <string name="auto_update_frequency_key">Auto_change_frequency_key</string>
+    <string name="cancel_button">Cancel</string>
+
+    <!-- frequency options -->
+    <string name="frequency_always">When screen turn on</string>
+    <string name="frequency_30">30 minutes</string>
+    <string name="frequency_1">1 hour</string>
+    <string name="frequency_6">6 hours</string>
+    <string name="frequency_12">12 hours</string>
+    <string name="frequency_24">24 hours</string>
+    <string name="title_activity_change">ChangeActivity</string>
+
 </resources>

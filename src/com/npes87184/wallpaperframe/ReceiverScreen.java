@@ -17,6 +17,7 @@ public class ReceiverScreen extends BroadcastReceiver {
 	private SharedPreferences prefs;
 	private static final String KEY_CHOOSE_NUMBER = "choose_number";
 	private static final String KEY_INDEX = "index";
+	private static final String KEY_TIME = "time";
 	
 	@Override
 	public void onReceive(Context context, Intent intent) {
@@ -27,22 +28,29 @@ public class ReceiverScreen extends BroadcastReceiver {
 		index = index%count;
 		
 		if(intent.getAction().equals(Intent.ACTION_BOOT_COMPLETED)) {
-			Intent intent1 = new Intent();
-			intent1.setClass(context, FrameService.class);
-			context.stopService(intent1);
-			context.startService(intent1);
+			if(prefs.getLong(KEY_TIME, 0) == 0) {
+				Intent intent1 = new Intent();
+				intent1.setClass(context, FrameService.class);
+				context.startService(intent1);
+			} else {
+				Intent intent1 = new Intent();
+				intent1.setClass(context, ChangeActivity.class);
+				context.startService(intent1);
+			}
 		} else if(intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {
-			wallpaperManager = WallpaperManager.getInstance(context);
-			try{  
-				File file = new File(prefs.getString(String.valueOf(index), "file:///android_asset/a.JPG"));
-				InputStream iStream = new FileInputStream(file);
-	            wallpaperManager.setStream(iStream);
-	        }catch(Exception ex){  
-	            ex.printStackTrace();  
-	        }
-			index++;
-			index = index%count;
-			prefs.edit().putInt(KEY_INDEX, index).commit();
+			if(prefs.getLong(KEY_TIME, 0) == 0) {
+				wallpaperManager = WallpaperManager.getInstance(context);
+				try{  
+					File file = new File(prefs.getString(String.valueOf(index), "file:///android_asset/a.JPG"));
+					InputStream iStream = new FileInputStream(file);
+					wallpaperManager.setStream(iStream);
+				} catch(Exception ex) {  
+					ex.printStackTrace();  
+				}
+				index++;
+				index = index%count;
+				prefs.edit().putInt(KEY_INDEX, index).commit();
+			}
 		}
 		System.out.println("rece");
 	}

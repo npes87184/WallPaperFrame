@@ -2,11 +2,11 @@ package com.npes87184.wallpaperframe;
 
 import android.app.Service;
 import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.IBinder;
-import android.preference.PreferenceManager;
 
 public class FrameService extends Service {
 	
@@ -15,37 +15,22 @@ public class FrameService extends Service {
 	private static final String KEY_CHECKBOX = "CHECK";
 	private SharedPreferences prefs;
 	
-/*	@Override
-	public void onStart(Intent intent, int startId) {
-		super.onStart(intent, startId);
-		if(!prefs.getBoolean(KEY_CHECKBOX, false)) {
-			System.out.println("kill itself");
-			stopSelf();
-		}
-		
-		System.out.println("Start Service");
-		try {
-			registerReceiver(mReceiver, filter);
-		} catch(Exception e) {
-			
-		}
-	}*/
-
 	@Override
     public void onCreate() {
-        prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        prefs = getSharedPreferences("prefs", Context.MODE_MULTI_PROCESS);
         super.onCreate();
     }
 	
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
 		
+		System.out.println("Start FrameService");
+		
 		if(!prefs.getBoolean(KEY_CHECKBOX, false)) {
 			System.out.println("kill itself");
 			stopSelf();
 		}
 		
-		System.out.println("Start Service");
 		try {
 			registerReceiver(mReceiver, filter);
 		} catch(Exception e) {

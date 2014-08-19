@@ -27,6 +27,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.preference.CheckBoxPreference;
+import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceActivity;
@@ -38,7 +39,7 @@ import android.widget.Toast;
 public class MainActivity extends PreferenceActivity implements OnSharedPreferenceChangeListener {
 
 	private static final String APP_NAME = "WallPaperFrame";
-	private static final double version = 1.0;
+	private static final double version = 1.1;
 	private static final String APP_ENTER_NUMBER = "enter_number";
 	private static final String KEY_CHECK = "start_check_key";
 	private static final String KEY_CHOOSE_NUMBER = "choose_number";
@@ -46,12 +47,17 @@ public class MainActivity extends PreferenceActivity implements OnSharedPreferen
 	private static final String KEY_OTA = "Check_Update_Key";
 	private static final String KEY_CHOOSE = "choose_figure_key";
 	private static final String KEY_CHECKBOX = "CHECK";
+	private static final String KEY_FREQUENCY = "Auto_change_frequency_key";
+	private static final String KEY_TIME = "time";
 	private SharedPreferences prefs;
 	private SharedPreferences rePreferences;
 	private CheckBoxPreference checkPreference;
 	private Preference aboutPreference;
 	private Preference otaPreference;
 	private Preference figurePreference;
+	private ListPreference frequencyPreference;
+	private Intent intent1;
+	private Intent intent2;
 	
 	private static final int EX_FILE_PICKER_RESULT = 0;
 	
@@ -63,11 +69,16 @@ public class MainActivity extends PreferenceActivity implements OnSharedPreferen
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		addPreferencesFromResource(R.xml.preference);
-
+		
 		prefs = getPreferenceScreen().getSharedPreferences();
 		rePreferences = getSharedPreferences("prefs", MODE_MULTI_PROCESS);
 		prefs.registerOnSharedPreferenceChangeListener(this);
-		
+
+		intent1 = new Intent();
+		intent2 = new Intent();
+		intent1.setClass(MainActivity.this, FrameService.class);
+		intent2.setClass(MainActivity.this, ChangeActivity.class);
+
 		i = prefs.getInt(APP_ENTER_NUMBER, 0);
 		i++;
 		
@@ -136,6 +147,9 @@ public class MainActivity extends PreferenceActivity implements OnSharedPreferen
 		prefs.edit().putInt(APP_ENTER_NUMBER, i).commit();
 		
 		checkPreference = (CheckBoxPreference)findPreference(KEY_CHECK);
+		
+		frequencyPreference = (ListPreference)findPreference(KEY_FREQUENCY);
+		setSummy();
 		
 		figurePreference = findPreference(KEY_CHOOSE);
 		figurePreference.setOnPreferenceClickListener(new OnPreferenceClickListener() {
@@ -208,18 +222,70 @@ public class MainActivity extends PreferenceActivity implements OnSharedPreferen
 	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
 		if(key.equals(KEY_CHECK)) {
 			if(sharedPreferences.getBoolean(KEY_CHECK, false)) {
-				sharedPreferences.edit().putBoolean(KEY_CHECKBOX, true).commit();
-				System.out.println("num");
-				Intent intent1 = new Intent();
-				intent1.setClass(MainActivity.this, FrameService.class);
-				stopService(intent1);
-				startService(intent1);
-			} else {
-				sharedPreferences.edit().putBoolean(KEY_CHECKBOX, false).commit();
-				System.out.println("num2");
-				Intent intent1 = new Intent();
-				intent1.setClass(MainActivity.this, FrameService.class);
-				stopService(intent1);
+				rePreferences.edit().putBoolean(KEY_CHECKBOX, true).commit();
+				if(frequencyPreference.getValue().equals("0")) {
+					stopService(intent1);
+					stopService(intent2);
+					startService(intent1);
+				} else { //choose sometime frequency
+					stopService(intent1);
+					stopService(intent2);
+					startService(intent2);
+				}
+			} else { //checkbox == false
+				rePreferences.edit().putBoolean(KEY_CHECKBOX, false).commit();
+				if(frequencyPreference.getValue().equals("0")) {
+					stopService(intent1);
+				} else {
+					stopService(intent2);
+				}
+			}
+		} else if(key.equals(KEY_FREQUENCY)) {
+			switch(Integer.parseInt(frequencyPreference.getValue())) {
+				case 0:
+					rePreferences.edit().putLong(KEY_TIME, 0).commit();
+					frequencyPreference.setSummary(getResources().getString(R.string.frequency_always));
+					stopService(intent1);
+					stopService(intent2);
+					startService(intent1);
+					break;
+				case 30:
+					rePreferences.edit().putLong(KEY_TIME, 30*60*1000).commit();
+					frequencyPreference.setSummary(getResources().getString(R.string.frequency_30));
+					stopService(intent1);
+					stopService(intent2);
+					startService(intent2);
+					break;
+				case 60:
+					System.out.println(60);
+					rePreferences.edit().putLong(KEY_TIME, 60*60*1000).commit();
+					frequencyPreference.setSummary(getResources().getString(R.string.frequency_1));
+					stopService(intent1);
+					stopService(intent2);
+					startService(intent2);
+					break;
+				case 360:
+					System.out.println(360);
+					rePreferences.edit().putLong(KEY_TIME, 360*60*1000).commit();
+					frequencyPreference.setSummary(getResources().getString(R.string.frequency_6));
+					stopService(intent1);
+					stopService(intent2);
+					startService(intent2);
+					break;
+				case 720:
+					rePreferences.edit().putLong(KEY_TIME, 720*60*1000).commit();
+					frequencyPreference.setSummary(getResources().getString(R.string.frequency_12));
+					stopService(intent1);
+					stopService(intent2);
+					startService(intent2);
+					break;
+				case 1440:
+					rePreferences.edit().putLong(KEY_TIME, 1440*60*1000).commit();
+					frequencyPreference.setSummary(getResources().getString(R.string.frequency_24));
+					stopService(intent1);
+					stopService(intent2);
+					startService(intent2);
+					break;
 			}
 		}
 	}
@@ -325,6 +391,29 @@ public class MainActivity extends PreferenceActivity implements OnSharedPreferen
 			System.out.println("IO");
 		} catch (URISyntaxException e) {
 			System.out.println("URL");
+		}
+	}
+	
+	private void setSummy() {
+		switch(Integer.parseInt(frequencyPreference.getValue())) {
+		case 0:
+			frequencyPreference.setSummary(getResources().getString(R.string.frequency_always));
+			break;
+		case 30:
+			frequencyPreference.setSummary(getResources().getString(R.string.frequency_30));
+			break;
+		case 60:
+			frequencyPreference.setSummary(getResources().getString(R.string.frequency_1));
+			break;
+		case 360:
+			frequencyPreference.setSummary(getResources().getString(R.string.frequency_6));
+			break;
+		case 720:
+			frequencyPreference.setSummary(getResources().getString(R.string.frequency_12));
+			break;
+		case 1440:
+			frequencyPreference.setSummary(getResources().getString(R.string.frequency_24));
+			break;
 		}
 	}
 }

@@ -15,7 +15,7 @@
     <string name="about_key">About_key</string>
     <string name="check_update">檢查新版本</string>
     <string name="check_update_key">Check_Update_Key</string>
-    <string name="version_name">&#160;版本：1.0</string>
+    <string name="version_name">&#160;版本：1.1</string>
     <string name="author">&#160;作者：NPES</string>
     <string name="about_detail"> 項目：<a href="https://github.com/npes87184/WallPaperFrame">GitHub</a></string>
     <string name="tip">透過長按選擇多張圖片</string>
@@ -27,5 +27,17 @@
 	<string name="version">&#160;找到新版本拉！ \n</string>
     <string name="app_website"> <a href="http://home.gamer.com.tw/creationDetail.php?sn=2556164">更多資訊</a></string>
     <string name="checking">檢查中\u2026</string> 
+    <string name="auto_update_frequency_title">自動變換頻率</string>
+    <string name="auto_update_frequency_key">Auto_change_frequency_key</string>
+    <string name="cancel_button">取消</string>
+
+    <!-- frequency options -->
+    <string name="frequency_always">開啟螢幕時變換</string>
+    <string name="frequency_30">30 分鐘</string>
+    <string name="frequency_1">1 小時</string>
+    <string name="frequency_6">6 小時</string>
+    <string name="frequency_12">12 小時</string>
+    <string name="frequency_24">24 小時</string>
+    <string name="title_activity_change">ChangeActivity</string>
     
 </resources>

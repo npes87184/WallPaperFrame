@@ -9,6 +9,8 @@ package com.npes87184.wallpaperframe;
 
 public final class R {
     public static final class array {
+        public static final int auto_update_frequency_entry=0x7f080002;
+        public static final int auto_update_frequency_value=0x7f080003;
         public static final int efp__size_units=0x7f080000;
         public static final int efp__sorting_types=0x7f080001;
     }
@@ -156,6 +158,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int ic_menu_archive=0x7f020052;
         public static final int ic_menu_info_details=0x7f020053;
         public static final int ic_menu_recent_history=0x7f020054;
+        public static final int ic_perm_group_device_alarms=0x7f020055;
     }
     public static final class id {
         public static final int RelativeLayout1=0x7f0b0005;
@@ -204,7 +207,8 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int ota=0x7f030009;
     }
     public static final class menu {
-        public static final int main=0x7f0a0000;
+        public static final int change=0x7f0a0000;
+        public static final int main=0x7f0a0001;
     }
     public static final class string {
         public static final int about=0x7f070017;
@@ -214,6 +218,9 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int app_name=0x7f07000d;
         public static final int app_website=0x7f070025;
         public static final int author=0x7f07001c;
+        public static final int auto_update_frequency_key=0x7f070028;
+        public static final int auto_update_frequency_title=0x7f070027;
+        public static final int cancel_button=0x7f070029;
         public static final int check_update=0x7f070019;
         public static final int check_update_key=0x7f07001a;
         public static final int checking=0x7f070026;
@@ -233,6 +240,15 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int efp__folder_not_created=0x7f07000a;
         public static final int efp__new_folder=0x7f070007;
         public static final int efp__sort=0x7f07000c;
+        public static final int frequency_1=0x7f07002c;
+        public static final int frequency_12=0x7f07002e;
+        public static final int frequency_24=0x7f07002f;
+        public static final int frequency_30=0x7f07002b;
+        public static final int frequency_6=0x7f07002d;
+        /**  frequency options 
+ frequency options 
+         */
+        public static final int frequency_always=0x7f07002a;
         public static final int hello_world=0x7f07000e;
         public static final int new_version=0x7f070020;
         public static final int new_version_number=0x7f07001f;
@@ -244,6 +260,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int start_check_off=0x7f070013;
         public static final int start_check_on=0x7f070012;
         public static final int tip=0x7f07001e;
+        public static final int title_activity_change=0x7f070030;
         public static final int version=0x7f070024;
         public static final int version_name=0x7f07001b;
     }

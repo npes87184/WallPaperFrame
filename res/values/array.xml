@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="auto_update_frequency_entry">  
+        <item>When screen turn on</item> 
+        <item>30 minutes</item>  
+        <item>1 hour</item>
+        <item>6 hours</item>    
+        <item>12 hours</item>  
+        <item>24 hours</item>     
+    </string-array>
+      
+    <string-array name="auto_update_frequency_value">   
+        <item>0</item> 
+        <item>30</item>  
+        <item>60</item>
+        <item>360</item>    
+        <item>720</item>  
+        <item>1440</item>     
+    </string-array> 
+</resources>

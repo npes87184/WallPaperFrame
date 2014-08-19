@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
     <CheckBoxPreference android:title="@string/start_check" android:summaryOn="@string/start_check_on" android:summaryOff="@string/start_check_off" android:defaultValue="false" android:key="@string/start_check_key" android:icon="@drawable/emo_im_laughing"/>
-    <Preference android:dependency="@string/start_check_key" android:title="@string/choose_figure" android:key="@string/choose_figure_key" android:icon="@drawable/ic_menu_archive"/><Preference android:icon="@drawable/ic_menu_info_details" android:title="@string/about" android:key="@string/about_key"/>
+    <ListPreference android:dependency="@string/start_check_key" android:entries="@array/auto_update_frequency_entry" android:entryValues="@array/auto_update_frequency_value" android:dialogTitle="@string/auto_update_frequency_title" android:title="@string/auto_update_frequency_title" android:key="@string/auto_update_frequency_key" android:negativeButtonText="@string/cancel_button" android:icon="@drawable/ic_perm_group_device_alarms" android:defaultValue="0"/><Preference android:dependency="@string/start_check_key" android:title="@string/choose_figure" android:key="@string/choose_figure_key" android:icon="@drawable/ic_menu_archive"/><Preference android:icon="@drawable/ic_menu_info_details" android:title="@string/about" android:key="@string/about_key"/>
     <Preference android:icon="@drawable/ic_menu_recent_history" android:title="@string/check_update" android:key="@string/check_update_key"/>
+    
     
     
 
