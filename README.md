@@ -23,7 +23,7 @@ Features
 
 Picture
 ========
-<img src="http://truth.bahamut.com.tw/s01/201408/d8409e25db69c1f617d5f5e5be123d59.PNG">
+<img src="http://truth.bahamut.com.tw/s01/201408/21ccaf6c08267b55276d851ff551b43b.PNG">
 
 Thanks
 ========
